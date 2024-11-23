@@ -1,34 +1,50 @@
-import express from "express"
-import cors from "cors"
-import "dotenv/config"
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
 import songRouter from "./src/routes/songRoute.js";
 import connectDB from "./src/config/mongodb.js";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import connectCloudinary from "./src/config/cloudinary.js";
 import albumRouter from "./src/routes/albumRoute.js";
 dotenv.config();
 
+// App configuration
+const app = express();
+const port = process.env.PORT || 4000;
 
+// Database and Cloudinary connections
+connectDB();
+connectCloudinary();
 
-//app config
-const app=express();
-const port=process.env.PORT||4000;
-connectDB()
-connectCloudinary()
-
-
-//middlewares
+// Middlewares
 app.use(express.json());
-app.use(cors());
 
-//initilizing routes
-app.use("/api/song",songRouter) 
-app.use("/api/album",albumRouter)
-app.get("/",(req,res)=>res.send("API Working"))
+// Configure CORS
+const allowedOrigins = [
+  "https://sportifyclone-admin.onrender.com",
+  "https://sportifyclone-frontend.onrender.com"
+];
 
-app.listen(port,()=>{
-    console.log(`Server started on the http://localhost:4000
-`);
-    
-})
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
+// Initializing routes
+app.use("/api/song", songRouter);
+app.use("/api/album", albumRouter);
+
+// Test route
+app.get("/", (req, res) => res.send("API Working"));
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
+});
