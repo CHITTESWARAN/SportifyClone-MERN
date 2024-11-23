@@ -1,16 +1,23 @@
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 
-// Load environment variables from .env file
+// Load environment variables
 dotenv.config();
+
+// Debugging log to ensure variables are loaded
+console.log("Environment Variables:", {
+    CLOUDINARY_NAME: process.env.CLOUDINARY_NAME,
+    CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+    CLOUDINARY_SECRET_KEY: process.env.CLOUDINARY_SECRET_KEY,
+});
 
 // Cloudinary configuration
 const connectCloudinary = () => {
     try {
         cloudinary.config({
-            cloud_name: "dr8furnpq",
-            api_key:"513875763888375",
-            api_secret:"WUoThcW1wltpnPjrQCzUX_1be-4",
+            cloud_name: process.env.CLOUDINARY_NAME,
+            api_key: process.env.CLOUDINARY_API_KEY,
+            api_secret: process.env.CLOUDINARY_SECRET_KEY,
         });
         console.log("Cloudinary connected successfully");
     } catch (error) {
