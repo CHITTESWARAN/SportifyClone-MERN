@@ -7,14 +7,14 @@ const PlayerContestProvider=(props)=>{
     const audioRef=useRef();
     const seekBg=useRef();
     const seekBar=useRef();
-    const url="http://localhost:4000";
+    const url="https://sportifyclone-backend.onrender.com";
     const [songsData,setSongData]=useState([])
     const [albumsData,setAlbumsData]=useState([])
     const[track,setTrack]=useState(songsData[0])
     const[playStatus,setPlayerStatus]=useState(false);
     const[time,setTime]=useState({
         currentTime:{
-            second:0,
+            second:0, 
             minute:0
         },
         totalTime:{

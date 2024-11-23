@@ -4,13 +4,6 @@ import dotenv from "dotenv";
 // Load environment variables
 dotenv.config();
 
-// Debugging log to ensure variables are loaded
-console.log("Environment Variables:", {
-    CLOUDINARY_NAME: process.env.CLOUDINARY_NAME,
-    CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
-    CLOUDINARY_SECRET_KEY: process.env.CLOUDINARY_SECRET_KEY,
-});
-
 // Cloudinary configuration
 const connectCloudinary = () => {
     try {
