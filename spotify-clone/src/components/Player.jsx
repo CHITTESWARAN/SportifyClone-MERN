@@ -5,7 +5,7 @@ import { PlayerContest } from '../context/PlayerContest'
 const Player = () => {
     const {track,seekBar,seekBg,playStatus,play,pause,time,previous,next,seekSong}=useContext(PlayerContest)
   return track?(
-    <div className='h-[10%] bg-black flex justify-between items-center text-white px-4'>
+    <div className='h-[10%] bg-black flex justify-between items-center text-white px-4 md:mb-[12%]'>
         <div className='hidden lg:flex items-center gap-4'>
         <img className='w-12' src={track.image} alt=''></img>
         <div>
