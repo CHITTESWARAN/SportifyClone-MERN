@@ -21,9 +21,7 @@ app.use(express.json());
 
 // Configure CORS
 const allowedOrigins = [
-  "https://sportifyclone-admin.onrender.com",
-  "https://rainbow-granita-10bfaa.netlify.app/",
-  "https://sportifyclone-frontend.onrender.com"
+  "*"
 ];
 
 app.use(
