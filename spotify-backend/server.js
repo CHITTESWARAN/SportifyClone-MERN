@@ -21,7 +21,9 @@ app.use(express.json());
 
 // Configure CORS
 const allowedOrigins = [
-  "*"
+  "https://stately-parfait-dea40a.netlify.app",
+  "https://sportifyclone-admin.onrender.com",
+  "https://sportifyclone-frontend.onrender.com"
 ];
 
 app.use(
